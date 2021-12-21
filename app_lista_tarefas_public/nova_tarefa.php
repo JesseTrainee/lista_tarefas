@@ -37,9 +37,9 @@
 								<hr />
 
 								<form>
-									<div class="form-group">
+									<div class="form-group" method="post" action="tarefa_controller.php">
 										<label>Descrição da tarefa:</label>
-										<input type="text" class="form-control" placeholder="Exemplo: Lavar o carro">
+										<input type="text" class="form-control" name="tarefa" placeholder="Exemplo: Lavar o carro">
 									</div>
 
 									<button class="btn btn-success">Cadastrar</button>
