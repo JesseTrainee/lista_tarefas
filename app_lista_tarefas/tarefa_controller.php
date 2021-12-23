@@ -1,20 +1,26 @@
 <?php
 
-	require "../../app_lista_tarefas/tarefa.model.php";
-	require "../../app_lista_tarefas/tarefa.service.php";
-	require "../../app_lista_tarefas/conexao.php";
+	require "../app_lista_tarefas/tarefa.model.php";
+	require "../app_lista_tarefas/tarefa.service.php";
+	require "../app_lista_tarefas/conexao.php";
 
-	echo '<pre>';
-	print_r($_POST);
-	echo '</pre>';
+	$acao =  isset($_GET['acao']) ? $_GET['acao'] : $acao;
 
-	$tarefa = new Tarefa();
-	$tarefa->__set('tarefa', $_POST['tarefa']);
+	if( $acao == 'inserir' ) {
+		$tarefa = new Tarefa();
+		$tarefa->__set('tarefa', $_POST['tarefa']);
 
-	$conexao = new Conexao();
+		$conexao = new Conexao();
 
-	$tarefaService = new TarefaService($conexao, $tarefa);
-	$tarefaService->inserir();
+		$tarefaService = new TarefaService($conexao, $tarefa);
+		$tarefaService->inserir();
+		header('Location: nova_tarefa.php?inclusao=1');
+	} else if( $acao == 'recuperar' ) {
+		$tarefa = new Tarefa();
+		$conexao = new Conexao();
 
-	header('Location: nova_tarefa.php?inclusao=1');
+		$tarefaService = new TarefaService($conexao, $tarefa);
+		$tarefas = $tarefaService->recuperar();
+	}
+
 ?>
