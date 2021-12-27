@@ -33,19 +33,25 @@ class TarefaService {
 	}
 
 	public function atualizar() { //update
+		//using marker parameter ? 
 		$query = '
 		UPDATE 
 			tb_tarefas
 		SET 
-			tarefa = :tarefa WHERE id= :id';
+			tarefa = ? WHERE id= ?';
 		$stmt = $this->conexao->prepare($query);
-		$stmt->bindValue(':tarefa', $this->tarefa->__get('tarefa'));
-		$stmt->bindValue(':id', $this->tarefa->__get('id'));
+		// 1 = tarefa
+		$stmt->bindValue(1, $this->tarefa->__get('tarefa'));
+		//2 = id
+		$stmt->bindValue(2, $this->tarefa->__get('id'));
 		return $stmt->execute();
 	}
 
-	public function remover() { //delete
-
+	public function remover() {
+		$query = 'DELETE FROM tb_tarefas WHERE id = ?';
+		$stmt = $this->conexao->prepare($query);
+		$stmt->bindValue(1, $this->tarefa->__get('id'));
+		$stmt->execute();
 	}
 }
 
