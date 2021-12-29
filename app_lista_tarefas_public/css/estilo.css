@@ -1,5 +1,33 @@
+body {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+	font-family: 'Lato', sans-serif;
+	font-weight: 400;
+}
+
+#context {
+	width: 100%;
+	height: 100%;
+	background: #fff url('../img/background.png') no-repeat ;
+	background-size: cover;
+}
+
+#icon {
+	width: 40px;
+}
+
 .menu {
 	margin-bottom: 25px;
+}
+
+#title {
+	/* font-weight: 700; */
+	font-size: 26px;
+}
+
+.navbar {
+	background-color: #d9f89ce8;
 }
 
 .app {
@@ -8,7 +36,9 @@
 
 .pagina {
 	border:solid 1px #DFDFDF;
+	border-radius: 5px;
 	padding:25px !important;
+	background-color: #FFFFFF;
 }
 
 li.list-group-item.active {
@@ -26,7 +56,10 @@ li a:hover {
 }
 
 h4 {
+	font-weight: 700;
 	color: #009933 !important;
 }
 
-
+.dashed-separator {
+	border: 0.5px dashed #bbb;
+}
